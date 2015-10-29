@@ -1,0 +1,35 @@
+{
+  "name": "mean-blog",
+  "version": "1.0.0",
+  "description": "A blogging system built on the MEAN stack.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsorensen/mean-blog.git"
+  },
+  "author": "Tyson Sorensen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsorensen/mean-blog/issues"
+  },
+  "homepage": "https://github.com/tsorensen/mean-blog#readme",
+  "devDependencies": {
+    "bower-files": "^3.11.3",
+    "eslint": "^1.7.2",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlmin": "^1.2.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-pleeease": "^2.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.1"
+  },
+  "dependencies": {
+    "bower-files": "^3.11.3"
+  }
+}
