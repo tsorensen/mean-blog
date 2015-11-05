@@ -8,6 +8,7 @@ var htmlmin = require('gulp-htmlmin');
 var express = require('express');
 var livereload = require('gulp-livereload');
 var please = require('gulp-pleeease');
+var plumber = require('gulp-plumber');
 var lib = require('bower-files')({
   overrides: {
     bootstrap: {
@@ -41,9 +42,10 @@ gulp.task('watch', [
 
 gulp.task('scripts', function () {
   return gulp.src(lib.ext('js').files.concat('src/scripts/**/*.js'))
+    .pipe(plumber())
     .pipe(sourcemaps.init())
-      .pipe(concat('app.min.js'))
-      .pipe(uglify())
+    .pipe(concat('app.min.js'))
+    .pipe(uglify())
     .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('build/js'));
 });
@@ -55,9 +57,10 @@ gulp.task('scripts.watch', ['scripts'], function () {
 
 gulp.task('styles', function () {
   return gulp.src(lib.ext('css').files.concat('src/styles/**/*.css'))
+    .pipe(plumber())
     .pipe(sourcemaps.init())
-      .pipe(concat('app.min.css'))
-      .pipe(please())
+    .pipe(concat('app.min.css'))
+    .pipe(please())
     .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('build/css'));
 });
