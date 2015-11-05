@@ -72,6 +72,7 @@ gulp.task('styles.watch', ['styles'], function () {
 
 gulp.task('static', function () {
   return gulp.src('src/static/**/*')
+    .pipe(plumber())
     .pipe(gulp.dest('build'));
 });
 //watcher
@@ -81,12 +82,14 @@ gulp.task('static.watch', ['static'], function () {
 
 gulp.task('fonts', function () {
   return gulp.src(lib.ext(['eot', 'svg', 'ttf', 'woff']).files)
+    .pipe(plumber())
     .pipe(gulp.dest('build/fonts'));
 });
 
 
 gulp.task('templates', function () {
   return gulp.src('src/templates/**/*.html')
+    .pipe(plumber())
     .pipe(htmlmin({
       collapseWhitespace: true
     }))
