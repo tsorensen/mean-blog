@@ -20,6 +20,7 @@ var lib = require('bower-files')({
     }
   }
 });
+var router = express.Router();
 
 gulp.task('default', [
   'fonts',
@@ -103,6 +104,13 @@ gulp.task('templates.watch', ['templates'], function () {
 //startup server on localhost
 gulp.task('server', function () {
   var app = express();
+
+  var blog = require('./routes/articles');
+  router.get('/articles', blog.findAll);
+  router.post('/articles', blog.insertArticle);
+  router.get('/articles/:id', blog.findById);
+
+  app.use('/api', router);
   app.use(express.static('build'));
   app.listen(8000);
 });
