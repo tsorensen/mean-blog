@@ -113,6 +113,8 @@ gulp.task('server', function () {
   app.use('/api', router);
   app.use(express.static('build'));
   app.listen(8000);
+
+  //require('./app');
 });
 
 
