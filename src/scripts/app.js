@@ -1,6 +1,8 @@
 angular
   .module('BlogApp', [
-    'ngRoute'
+    'ngRoute',
+    'BlogController',
+    //'ArticleController'
   ])
   .config([
     '$routeProvider',
