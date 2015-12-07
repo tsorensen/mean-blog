@@ -3,6 +3,7 @@ angular
     'ngRoute',
     'BlogController',
     'ArticleController',
+    'AddController',
   ])
   .config([
     '$routeProvider',
@@ -17,6 +18,11 @@ angular
           templateUrl: '/partials/article-controller.html',
           controller: 'ArticleController',
           controllerAs: 'article',
+        })
+        .when('/add', {
+          templateUrl: '/partials/add-article-controller.html',
+          controller: 'AddController',
+          controllerAs: 'adder',
         })
         .otherwise('/');
     }
