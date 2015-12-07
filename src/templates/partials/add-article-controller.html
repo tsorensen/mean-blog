@@ -30,8 +30,8 @@
   			</div>
 
 				<div class="form-group has-feedback description">
-					<label class="labels" for="body">Short Description</label>
-					<textarea class="form-control" id="body" placeholder="Article content..." name="body" required></textarea>
+					<label class="labels" for="body">Body</label>
+					<textarea class="form-control" id="body" placeholder="Article body..." name="body" required></textarea>
 					<!-- <i class="fa fa-quote-right form-icons"></i> -->
 				</div>
 
@@ -40,3 +40,7 @@
 
 	</div><!-- /col -->
 </div><!-- /row -->
+
+<script>
+  CKEDITOR.replace('body');
+</script>
