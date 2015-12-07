@@ -4,34 +4,63 @@
   <!-- add article form -->
 	<div class="col-md-10 col-md-offset-1">
 
-			<form id="add-form" action="add.php" method="POST" enctype="multipart/form-data">
+			<form
+        id="add-form"
+        enctype="multipart/form-data"
+        ng-submit="article.submit(article.inputs.title, article.inputs.author, article.inputs.image, article.inputs.content)">
 
 				<div class="form-group has-feedback">
 					<label class="labels" for="title">Title</label>
-					<input type="text" class="form-control" id="title" placeholder="Title" name="title" required>
+					<input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Title"
+            name="title"
+            ng-model="article.inputs.title">
 					<!-- <i class="fa fa-user form-icons"></i> -->
 				</div>
 
         <div class="form-group has-feedback">
 					<label class="labels" for="author">Author</label>
-					<input type="text" class="form-control" id="author" placeholder="Author's Name" name="author" required>
+					<input
+            type="text"
+            class="form-control"
+            id="author"
+            placeholder="Author's Name"
+            name="author"
+            ng-model="article.inputs.author">
 					<!-- <i class="fa fa-user form-icons"></i> -->
 				</div>
 
 				<!-- 750 x 250 -->
 				<div class="form-group has-feedback">
 					<label class="labels" for="image">Image</label>
-					<input style="color:#999" type="file" class="form-control" id="image" placeholder="Image" name="image" required>
+					<input
+            style="color:#999"
+            type="file"
+            class="form-control"
+            id="image"
+            placeholder="750x250 minimum size"
+            name="image"
+            img-preview
+            ng-model="article.inputs.image">
 					<!-- <i class="fa fa-image form-icons"></i> -->
 				</div>
 
-        <div class="uploaded_img">
-  				<img style="display:none;" id="chosen" src="#" alt="Your image">
+        <div class="uploaded_img form-group has-feedback">
+          <label class="labels">Image Preview</label>
+          <div ng-if="error" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{ error }}
+          </div>
+  				<img class="img-responsive" src="{{ image ? image : 'http://placehold.it/750x250' }}" alt="Article image" accept="image/*">
   			</div>
 
 				<div class="form-group has-feedback description">
-					<label class="labels" for="body">Body</label>
-					<textarea class="form-control" id="body" placeholder="Article body..." name="body" required></textarea>
+					<label class="labels" for="content">Body</label>
+					<div text-angular ng-model="article.inputs.content" id="content" name="content"></div>
 					<!-- <i class="fa fa-quote-right form-icons"></i> -->
 				</div>
 
@@ -40,7 +69,3 @@
 
 	</div><!-- /col -->
 </div><!-- /row -->
-
-<script>
-  CKEDITOR.replace('body');
-</script>

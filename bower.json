@@ -21,6 +21,6 @@
     "bootstrap": "~3.3.5",
     "components-font-awesome": "~4.4.0",
     "angular-route": "~1.4.7",
-    "ckeditor": "~4.5.5"
+    "textAngular": "~1.4.6"
   }
 }

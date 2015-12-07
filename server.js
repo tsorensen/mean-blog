@@ -9,4 +9,5 @@ router.get('/articles/:id', blog.findById);
 
 app.use('/api', router);
 app.use(express.static('build'));
-app.listen(8000);
+var port = 8000;
+app.listen(port);

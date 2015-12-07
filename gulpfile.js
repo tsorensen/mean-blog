@@ -18,9 +18,13 @@ var lib = require('bower-files')({
         'dist/fonts/*'
       ]
     },
-    ckeditor: {
+    textAngular: {
       main: [
-        'ckeditor.js'
+        'dist/textAngular.css',
+        'dist/textAngular-rangy.min.js',
+        'dist/textAngular-sanitize.js',
+        'dist/textAngularSetup.js',
+        'dist/textAngular.js',
       ]
     }
   }
