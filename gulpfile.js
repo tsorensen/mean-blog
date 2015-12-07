@@ -17,6 +17,11 @@ var lib = require('bower-files')({
         'dist/css/bootstrap.css',
         'dist/fonts/*'
       ]
+    },
+    ckeditor: {
+      main: [
+        'ckeditor.js'
+      ]
     }
   }
 });
@@ -82,7 +87,7 @@ gulp.task('static.watch', ['static'], function () {
 });
 
 gulp.task('fonts', function () {
-  return gulp.src(lib.ext(['eot', 'svg', 'ttf', 'woff']).files)
+  return gulp.src(lib.ext(['eot', 'svg', 'ttf', 'woff', 'woff2']).files)
     .pipe(plumber())
     .pipe(gulp.dest('build/fonts'));
 });
