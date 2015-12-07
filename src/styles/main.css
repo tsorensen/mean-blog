@@ -9,6 +9,6 @@ footer {
   margin-top: 30px;
 }
 
-.copyright {
+.copyright, .copyright a {
   color: #9d9d9d;
 }

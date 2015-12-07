@@ -6,8 +6,7 @@
 
 			<form
         id="add-form"
-        enctype="multipart/form-data"
-        ng-submit="article.submit(article.inputs.title, article.inputs.author, article.inputs.image, article.inputs.content)">
+        ng-submit="adder.submit(adder.inputs)">
 
 				<div class="form-group has-feedback">
 					<label class="labels" for="title">Title</label>
@@ -17,7 +16,7 @@
             id="title"
             placeholder="Title"
             name="title"
-            ng-model="article.inputs.title">
+            ng-model="adder.inputs.title">
 					<!-- <i class="fa fa-user form-icons"></i> -->
 				</div>
 
@@ -29,7 +28,7 @@
             id="author"
             placeholder="Author's Name"
             name="author"
-            ng-model="article.inputs.author">
+            ng-model="adder.inputs.author">
 					<!-- <i class="fa fa-user form-icons"></i> -->
 				</div>
 
@@ -44,27 +43,27 @@
             placeholder="750x250 minimum size"
             name="image"
             img-preview
-            ng-model="article.inputs.image">
+            ng-model="adder.inputs.image">
 					<!-- <i class="fa fa-image form-icons"></i> -->
 				</div>
 
         <div class="uploaded_img form-group has-feedback">
           <label class="labels">Image Preview</label>
-          <div ng-if="error" class="alert alert-danger" role="alert">
+          <div ng-if="adder.error" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span>
-            {{ error }}
+            {{ adder.error }}
           </div>
-  				<img class="img-responsive" src="{{ image ? image : 'http://placehold.it/750x250' }}" alt="Article image" accept="image/*">
+  				<img class="img-responsive" src="{{ adder.image ? adder.image : 'http://placehold.it/750x250' }}" alt="Article image" accept="image/*">
   			</div>
 
 				<div class="form-group has-feedback description">
 					<label class="labels" for="content">Body</label>
-					<div text-angular ng-model="article.inputs.content" id="content" name="content"></div>
+					<div text-angular ng-model="adder.inputs.content" id="content" name="content"></div>
 					<!-- <i class="fa fa-quote-right form-icons"></i> -->
 				</div>
 
-				<button type="submit" name="submit" class="submit-btn btn btn-primary">Add Article</button>
+				<input type="submit" name="submit" class="submit-btn btn btn-primary" value="Add Article">
 			</form>
 
 	</div><!-- /col -->

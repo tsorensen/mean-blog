@@ -32,6 +32,8 @@
     "mongoose": "^4.2.4"
   },
   "dependencies": {
-    "bower-files": "^3.11.3"
+    "body-parser": "^1.14.1",
+    "bower-files": "^3.11.3",
+    "multer": "^1.1.0"
   }
 }

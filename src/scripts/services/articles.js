@@ -8,7 +8,11 @@ angular
     function($http, host) {
       return {
 
-        create: function(userId, data) {
+        create: function(data) {
+          
+          console.log('passing this data: ');
+          console.log(data);
+
           return $http
             .post(host + '/articles', data)
             .then(function(res) {
