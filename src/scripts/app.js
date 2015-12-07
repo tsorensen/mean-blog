@@ -2,7 +2,7 @@ angular
   .module('BlogApp', [
     'ngRoute',
     'BlogController',
-    //'ArticleController'
+    'ArticleController',
   ])
   .config([
     '$routeProvider',
@@ -13,7 +13,7 @@ angular
           controller: 'BlogController',
           controllerAs: 'blog',
         })
-        .when('/article/:id', {
+        .when('/articles/:id', {
           templateUrl: '/partials/article-controller.html',
           controller: 'ArticleController',
           controllerAs: 'article',

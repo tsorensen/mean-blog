@@ -20,6 +20,7 @@ angular
           return $http
           .get(host + '/articles/' + articleId)
           .then(function(res) {
+            console.log(res.data);
             return res.data;
           });
         }, //end read

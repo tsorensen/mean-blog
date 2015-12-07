@@ -1,6 +1,6 @@
 angular
   .module('BlogController', [
-    'blogApp.blog'
+    'blogApp.blog',
   ])
   .controller('BlogController', [
     'blog',
@@ -9,12 +9,15 @@ angular
       var self = this;
       self.articles = [];
 
-      self.getArticles = function() {
-        self.articles = blog.read();
-        console.log('here is getArticles data: ');
-        console.log(self.articles);
-      };
+      function getArticles() {
+        blog.read()
+          .then(function(articles) {
+            self.articles = articles;
+            console.log('here is getArticles data: ');
+            console.log(self.articles);
+          });
+      }
 
-      self.getArticles();
+      getArticles();
     },
   ]);
