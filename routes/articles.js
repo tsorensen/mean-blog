@@ -4,7 +4,7 @@ var Article = require('./../models/article');
 
 exports.findAll = function(req, res) {
   //res.json({ message: 'api test message' });
-  Article.find(function(err, articles) {
+  Article.find({}, null, {sort: {date: -1}}, function(err, articles) {
     if (err) {
         res.send(err);
     }
@@ -25,9 +25,6 @@ exports.findById = function(req, res) {
 };
 
 exports.insertArticle = function(req, res, next) {
-  //console.dir(req.body);
-  //console.dir(req.file);
-  //console.dir(req.file);
   var article = new Article();
   article.title = req.body.title;
   article.author = req.body.author;
@@ -44,6 +41,4 @@ exports.insertArticle = function(req, res, next) {
     }
     res.json({ message: 'Article saved!' });
   });
-
-
 };

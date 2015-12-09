@@ -6,6 +6,18 @@ body {
   margin-top:20px;
 }
 
+.title {
+  color: #337ab7;
+}
+
+.author {
+  color: #337ab7;
+}
+
+.no-border {
+  border:none;
+}
+
 footer {
   background: #222;
   border-color: #080808;
