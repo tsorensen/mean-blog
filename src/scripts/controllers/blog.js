@@ -2,6 +2,7 @@ angular
   .module('BlogController', [
     'blogApp.blog',
     'renderHtmlFilter',
+    'limitHtmlFilter',
   ])
   .controller('BlogController', [
     'blog',

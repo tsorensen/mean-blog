@@ -20,7 +20,7 @@ angular
               index.body = $filter('renderHtml')(index.body);
 
               //format dates
-              index.date = moment(index.date).format('MMM DD, YYYY HH:mm a');
+              index.date = moment(index.date).format('MMM DD, YYYY hh:mm a');
             });
             return res.data;
           });

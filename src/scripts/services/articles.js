@@ -39,7 +39,7 @@ angular
               res.data.body = $filter('renderHtml')(res.data.body);
 
               //format dates
-              res.data.date = moment(res.data.date).format('MMM DD, YYYY HH:mm a');
+              res.data.date = moment(res.data.date).format('MMM DD, YYYY hh:mm a');
             return res.data;
           });
         }, //end read
