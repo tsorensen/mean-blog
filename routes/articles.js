@@ -25,20 +25,21 @@ exports.findById = function(req, res) {
 };
 
 exports.insertArticle = function(req, res) {
-  console.dir(req);
+  console.dir(req.body);
   var article = new Article();
   article.title = req.body.title;
   article.author = req.body.author;
   article.image = '';
   article.body = req.body.content;
 
-	if(req.files.image) {
-		article.imageOriginalName  = req.file.image.originalname;
-		article.image 			       = req.file.image.name;
-		article.imageMime 			   = req.file.image.mimetype;
-		article.imagePath 			   = req.file.image.path;
-		article.imageExt 			     = req.file.image.extension;
-		article.imageSize 			   = req.file.image.size;
+	if(req.body.image) {
+    console.log("INSIDE THE IMAGE IF");
+		article.imageOriginalName  = req.body.image.originalname;
+		article.image 			       = req.body.image.name;
+		article.imageMime 			   = req.body.image.mimetype;
+		article.imagePath 			   = req.body.image.path;
+		article.imageExt 			     = req.body.image.extension;
+		article.imageSize 			   = req.body.image.size;
 	}
 
   article.save(function(err) {

@@ -15,6 +15,9 @@ angular
             self.articles = articles;
             console.log('here is getArticles data: ');
             console.log(self.articles);
+            // self.articles.map(function(index) {
+            //   index.content = $sce.trustAsHtml(index.body);
+            // });
           });
       }
 

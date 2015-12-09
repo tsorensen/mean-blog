@@ -11,13 +11,13 @@
         </h2>
         <p class="">
             by <a href="index.php">{{ article.author }}</a>
-            <span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM
+            <span class="glyphicon glyphicon-time"></span> Posted on {{ article.date }}
         </p>
 
         <hr>
-        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+        <img class="img-responsive" src="http://placehold.it/750x250" alt="">
         <hr>
-        <p>{{ article.body }}</p>
+        <div class="excerpt">{{ article.body }}</div>
         <a class="btn btn-primary" href="#/articles/{{ article._id }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
         <hr>
