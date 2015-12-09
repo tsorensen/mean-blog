@@ -14,11 +14,13 @@
             <span class="glyphicon glyphicon-time"></span> Posted on {{ article.date }}
         </p>
 
-        <hr>
-        <img class="img-responsive" src="http://placehold.it/750x250" alt="">
-        <hr>
-        <div class="excerpt">{{ article.body }}</div>
-        <a class="btn btn-primary" href="#/articles/{{ article._id }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <div ng-if="article.image" class="article-img">
+          <hr>
+          <img class="img-responsive" src="images/uploads/jimasdwightcover-1449695730366.jpeg" alt="Blog article image">
+          <hr>
+        </div>
+        <div class="excerpt" ng-bind-html="(article.body | limitTo:300) + '...'"></div>
+        <a class="read-more btn btn-primary" href="#/articles/{{ article._id }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
         <hr>
       </div>

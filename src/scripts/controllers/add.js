@@ -3,11 +3,13 @@ angular
     'blogApp.articles',
     'textAngular',
     'imgPreviewDirective',
+    'fileUploadDirective',
   ])
   .controller('AddController', [
     'articles',
     '$location',
-    function(articles, $location) {
+    '$scope',
+    function(articles, $location, $scope) {
       var self = this;
       self.image = '';
 
@@ -23,14 +25,18 @@ angular
       resetAddForm();
 
       self.submit = function (data) {
+        var file = $scope.myFile || '';
+        console.log('here is the file: ');
+        console.log(file);
+        console.log(self);
+
         var article = {
           title: data.title,
           author: data.author,
-          image: (self.image || ''),
           content: data.content
         };
 
-        articles.create(article)
+        articles.create(article, file)
           .then(function() {
             $location.url('/#/');
             console.log('success');

@@ -24,23 +24,19 @@ exports.findById = function(req, res) {
   });
 };
 
-exports.insertArticle = function(req, res) {
-  console.dir(req.body);
+exports.insertArticle = function(req, res, next) {
+  //console.dir(req.body);
+  //console.dir(req.file);
+  //console.dir(req.file);
   var article = new Article();
   article.title = req.body.title;
   article.author = req.body.author;
-  article.image = '';
   article.body = req.body.content;
 
-	if(req.body.image) {
-    console.log("INSIDE THE IMAGE IF");
-		article.imageOriginalName  = req.body.image.originalname;
-		article.image 			       = req.body.image.name;
-		article.imageMime 			   = req.body.image.mimetype;
-		article.imagePath 			   = req.body.image.path;
-		article.imageExt 			     = req.body.image.extension;
-		article.imageSize 			   = req.body.image.size;
-	}
+  //image is optional
+  if(typeof req.file != 'undefined') {
+    article.image = req.file.filename;
+  }
 
   article.save(function(err) {
     if (err) {

@@ -5,7 +5,8 @@ angular
   .factory('blog', [
     '$http',
     'blogAppHost',
-    function($http, host) {
+    '$filter',
+    function($http, host, $filter) {
       return {
 
         read: function() {
@@ -15,10 +16,11 @@ angular
           .then(function(res) {
             console.log(res.data);
             res.data.map(function(index) {
-              console.log('here is the index');
-              console.log(index);
-              index.date = moment(index.date).format('MMM DD YYYY HH:mm:ss');
-              console.log(index);
+              //render html
+              index.body = $filter('renderHtml')(index.body);
+
+              //format dates
+              index.date = moment(index.date).format('MMM DD, YYYY HH:mm a');
             });
             return res.data;
           });

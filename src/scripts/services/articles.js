@@ -5,16 +5,26 @@ angular
   .factory('articles', [
     '$http',
     'blogAppHost',
-    function($http, host) {
+    '$filter',
+    function($http, host, $filter) {
       return {
 
-        create: function(data) {
-          
-          console.log('passing this data: ');
-          console.log(data);
+        create: function(data, file) {
+          var fd = new FormData();
+
+          for(var attr in data) {
+            fd.append(attr, data[attr]);
+          }
+
+          if(file) {
+            fd.append('file', file);
+          }
 
           return $http
-            .post(host + '/articles', data)
+            .post(host + '/articles', fd, {
+              transformRequest: angular.identity,
+              headers: {'Content-Type': undefined}
+            })
             .then(function(res) {
               return res.data;
             });
@@ -25,6 +35,11 @@ angular
           .get(host + '/articles/' + articleId)
           .then(function(res) {
             console.log(res.data);
+              //render html
+              res.data.body = $filter('renderHtml')(res.data.body);
+
+              //format dates
+              res.data.date = moment(res.data.date).format('MMM DD, YYYY HH:mm a');
             return res.data;
           });
         }, //end read

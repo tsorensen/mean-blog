@@ -6,6 +6,7 @@
 
 			<form
         id="add-form"
+        enctype="multipart/form-data"
         ng-submit="adder.submit(adder.inputs)">
 
 				<div class="form-group has-feedback">
@@ -42,7 +43,8 @@
             id="image"
             placeholder="750x250 minimum size"
             name="image"
-            img-preview
+            img-preview="imgPreview"
+            file-model="myFile"
             ng-model="adder.inputs.image">
 					<!-- <i class="fa fa-image form-icons"></i> -->
 				</div>

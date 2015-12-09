@@ -1,6 +1,7 @@
 angular
   .module('BlogController', [
     'blogApp.blog',
+    'renderHtmlFilter',
   ])
   .controller('BlogController', [
     'blog',
