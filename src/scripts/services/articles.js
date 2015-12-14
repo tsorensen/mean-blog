@@ -44,6 +44,25 @@ angular
           });
         }, //end read
 
+        readAll: function() {
+          return $http
+            .get(host + '/articles')
+            .then(function(res) {
+              res.data.map(function(index) {
+                //render html
+                index.body = $filter('renderHtml')(index.body);
+
+                if(index.category) {
+                  index.category = index.category.split(', ');
+                }
+
+                //format dates
+                index.date = moment(index.date).format('MMM DD, YYYY hh:mm a');
+              });
+              return res.data;
+            });
+        }, //end readAll
+
         update: function(articleId, data) {
           return $http
             .put(host + '/articles/' + articleId, data)

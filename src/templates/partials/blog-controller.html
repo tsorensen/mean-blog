@@ -65,7 +65,7 @@
           <div class="row">
               <div class="col-lg-12">
                   <ul class="list-unstyled">
-                      <li ng-repeat="article in blog.articles">
+                      <li ng-repeat="article in blog.articles" ng-if="$index < 4">
                         <a href="#/articles/{{ article._id }}">{{ article.title}}</a>
                       </li>
                   </ul>

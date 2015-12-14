@@ -1,23 +1,23 @@
 angular
   .module('BlogController', [
-    'blogApp.blog',
+    'blogApp.articles',
     'renderHtmlFilter',
     'limitHtmlFilter',
     'uniqueFilter',
   ])
   .controller('BlogController', [
-    'blog',
+    'articles',
     '$location',
     '$filter',
-    function(blog, $location, $filter) {
+    function(articles, $location, $filter) {
       var self = this;
       self.articles = [];
       self.categories = [];
 
       function getArticles() {
-        blog.read()
-          .then(function(articles) {
-            self.articles = articles;
+        articles.readAll()
+          .then(function(items) {
+            self.articles = items;
             self.articles.map(function(article) {
               if(article.category) {
                 for (var i=0; i < article.category.length; i++) {

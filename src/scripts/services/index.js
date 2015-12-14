@@ -1,6 +1,5 @@
 angular
   .module('blogApp', [
-    'blogApp.blog',
     'blogApp.articles'
   ])
   .value('blogAppHost', 'http://localhost:8000/api')
