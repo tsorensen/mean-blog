@@ -33,6 +33,7 @@ angular
         var article = {
           title: data.title,
           author: data.author,
+          category: data.category.toLowerCase(),
           content: data.content
         };
 

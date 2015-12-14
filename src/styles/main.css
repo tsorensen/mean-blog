@@ -18,6 +18,10 @@ body {
   border:none;
 }
 
+.space-left {
+  margin-left:5px;
+}
+
 footer {
   background: #222;
   border-color: #080808;

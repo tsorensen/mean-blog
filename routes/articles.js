@@ -28,6 +28,7 @@ exports.insertArticle = function(req, res, next) {
   var article = new Article();
   article.title = req.body.title;
   article.author = req.body.author;
+  article.category = req.body.category;
   article.body = req.body.content;
 
   //image is optional
