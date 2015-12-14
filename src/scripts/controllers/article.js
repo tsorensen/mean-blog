@@ -5,10 +5,10 @@ angular
   ])
   .controller('ArticleController', [
     'articles',
-    '$location',
+    '$route',
     '$routeParams',
     '$filter',
-    function(articles, $location, $routeParams, $filter) {
+    function(articles, $route, $routeParams, $filter) {
       var self = this;
       self.id = $routeParams.id;
       self.content = [];
@@ -54,6 +54,36 @@ angular
       {
         return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
       }
+
+      function resetCommentForm() {
+        self.create = {
+          name: '',
+          comment: ''
+        };
+      }
+
+      resetCommentForm();
+
+      self.submit = function (data) {
+        var comment = {
+          id: self.id,
+          name: data.name,
+          content: data.comment,
+        };
+
+        console.log('here is the comment: ');
+        console.log(comment);
+
+        articles.createComment(comment)
+          .then(function() {
+            $route.reload();
+            console.log('success');
+          })
+          .catch(function(res) {
+            console.log('There was an error: ');
+            console.log(res.data);
+          });
+      };
 
       getRecentArticles();
       getArticle();

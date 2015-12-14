@@ -20,6 +20,7 @@ var upload = multer({ storage: storage });
 router.get('/articles', blog.findAll);
 router.post('/articles', upload.single('file'), blog.insertArticle);
 router.get('/articles/:id', blog.findById);
+router.post('/comments', upload.single(), blog.saveComment);
 
 app.use('/api', router);
 app.use(express.static('build'));

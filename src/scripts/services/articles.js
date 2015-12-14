@@ -30,6 +30,25 @@ angular
             });
         }, //end create
 
+        createComment: function(comment) {
+          var fd = new FormData();
+
+          for(var attr in comment) {
+            fd.append(attr, comment[attr]);
+          }
+
+          return $http
+            .post(host + '/comments', fd, {
+              transformRequest: angular.identity,
+              headers: {'Content-Type': undefined}
+            })
+            .then(function(res) {
+              console.log('create comment result: ');
+              console.log(res.data);
+              return res.data;
+            });
+        }, //end createComment
+
         read: function(articleId) {
           return $http
           .get(host + '/articles/' + articleId)
@@ -40,6 +59,9 @@ angular
 
               //format dates
               res.data.date = moment(res.data.date).format('MMM DD, YYYY hh:mm a');
+              res.data.comments.map(function(index) {
+                index.date = moment(index.date).format('MMM DD, YYYY hh:mm a');
+              });
             return res.data;
           });
         }, //end read

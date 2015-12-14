@@ -43,3 +43,37 @@ exports.insertArticle = function(req, res, next) {
     res.json({ message: 'Article saved!' });
   });
 };
+
+exports.saveComment = function(req, res, next) {
+  //console.log(req.body);
+  //console.log(req);
+  var comment = {
+    name: req.body.name,
+    comment: req.body.content,
+    approved: false,
+    nestedId: ''
+  };
+
+  console.log('comment being saved: ');
+  console.log(comment);
+
+  var id = req.body.id;
+
+  console.log("id: " + id);
+
+  Article.findOneAndUpdate(
+    { "_id": id},
+    {
+        "$push": {
+            "comments": comment
+        }
+    },
+    function(err, comment) {
+      if (err) {
+          res.send(err);
+      }
+      res.json(comment);
+    }
+  );
+
+};
