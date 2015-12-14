@@ -10,14 +10,17 @@
           <h1 class="title">{{ article.content.title }}</h1>
 
           <!-- Author -->
-          <p>
-              by <span class="author">{{ article.content.author }}</span>
-              <span class="glyphicon glyphicon-time"></span>
-              Posted on August 24, 2013 at 9:00 PM
+          <p class="">
+              by <span class="author">{{ article.author }}</span>
+              <span class="glyphicon glyphicon-time space-left"></span> Posted on {{ article.content.date }}
+              <span ng-if="article.content.category" class="fa fa-folder-open space-left"></span>
+              <span class="cat-wrapper" ng-if="article.content.category" ng-repeat="cat in article.content.category.split(', ')">
+                <a href="#/search/category/{{ cat }}" class="categories" >{{ cat }}</a>{{ $last ? '' : ', '}}
+              </span>
           </p>
           <hr>
 
-          <!-- preview image -->
+          <!-- article image -->
           <div ng-if="article.content.image" class="article-img">
             <img class="img-responsive" ng-src="images/uploads/{{article.content.image}}" alt="Article image">
             <hr>
@@ -30,7 +33,6 @@
         <hr>
 
         <!-- Blog Comments -->
-
         <!-- Comments Form -->
         <div class="well">
             <h4>Leave a Comment:</h4>
@@ -44,7 +46,6 @@
                   placeholder="Your name"
                   name="name"
                   ng-model="article.inputs.name">
-                <!-- <i class="fa fa-user form-icons"></i> -->
               </div>
               <div class="form-group">
                   <label class="labels" for="comment">Comment</label>
@@ -74,7 +75,7 @@
             </div>
         </div>
 
-        <!-- Comment -->
+        <!-- Comment w/ nested comment -->
         <!-- <div class="media">
             <a class="pull-left" href="#">
                 <img class="media-object" src="http://placehold.it/64x64" alt="">
@@ -155,7 +156,7 @@
             <!-- /.row -->
         </div>
 
-        <!-- Side Widget Well -->
+        <!-- Facebook Pages Widget Well -->
         <div class="well text-center">
           <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
             <div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/facebook">

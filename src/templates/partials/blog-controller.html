@@ -4,7 +4,7 @@
   <!-- Blog Entries Column -->
   <div class="col-md-8">
 
-      <!-- First Blog Post -->
+      <!-- Blog Posts -->
       <div class="articles" ng-repeat="article in blog.articles">
         <h2>
             <a href="#/articles/{{ article._id }}">{{ article.title }}</a>
@@ -20,7 +20,7 @@
 
         <div ng-if="article.image" class="article-img">
           <hr>
-          <img class="img-responsive" ng-src="images/uploads/{{article.image}}" alt="Article image">
+          <a href="#/articles/{{ article._id }}"><img class="img-responsive" ng-src="images/uploads/{{article.image}}" alt="Article image"></a>
           <hr>
         </div>
 
@@ -96,7 +96,7 @@
           <!-- /.row -->
       </div>
 
-      <!-- Side Widget Well -->
+      <!-- Facebook Pages Widget Well -->
       <div class="well text-center">
         <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
           <div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/facebook">

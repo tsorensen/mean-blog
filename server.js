@@ -3,7 +3,7 @@ var app = express();
 var router = express.Router();
 var blog = require('./routes/articles');
 
-//for image uploads, supports multipart-data
+//using multer for image/text uploads, supports multipart-data
 var multer = require('multer');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {

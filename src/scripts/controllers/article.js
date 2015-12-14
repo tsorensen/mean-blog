@@ -19,8 +19,6 @@ angular
         articles.read(self.id)
           .then(function(article) {
             self.content = article;
-            console.log('here is getArticle data: ');
-            console.log(self.content);
           });
       }
 
@@ -70,9 +68,6 @@ angular
           name: data.name,
           content: data.comment,
         };
-
-        console.log('here is the comment: ');
-        console.log(comment);
 
         articles.createComment(comment)
           .then(function() {

@@ -4,12 +4,13 @@ angular
     'renderHtmlFilter',
     'limitHtmlFilter',
     'uniqueFilter',
+    'ezfb',
   ])
   .controller('BlogController', [
     'articles',
-    '$location',
+    '$scope',
     '$filter',
-    function(articles, $location, $filter) {
+    function(articles, $scope, $filter) {
       var self = this;
       self.articles = [];
       self.categories = [];

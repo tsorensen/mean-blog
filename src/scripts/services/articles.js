@@ -43,8 +43,7 @@ angular
               headers: {'Content-Type': undefined}
             })
             .then(function(res) {
-              console.log('create comment result: ');
-              console.log(res.data);
+              console.log('Comment submitted successfully');
               return res.data;
             });
         }, //end createComment

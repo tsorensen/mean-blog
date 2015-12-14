@@ -3,12 +3,10 @@ mongoose.connect('mongodb://admin:1234@ds053184.mongolab.com:53184/mean-blog');
 var Article = require('./../models/article');
 
 exports.findAll = function(req, res) {
-  //res.json({ message: 'api test message' });
   Article.find({}, null, {sort: {date: -1}}, function(err, articles) {
     if (err) {
         res.send(err);
     }
-    //console.dir(articles);
     res.json(articles);
   });
 };
@@ -45,8 +43,6 @@ exports.insertArticle = function(req, res, next) {
 };
 
 exports.saveComment = function(req, res, next) {
-  //console.log(req.body);
-  //console.log(req);
   var comment = {
     name: req.body.name,
     comment: req.body.content,
@@ -54,12 +50,7 @@ exports.saveComment = function(req, res, next) {
     nestedId: ''
   };
 
-  console.log('comment being saved: ');
-  console.log(comment);
-
   var id = req.body.id;
-
-  console.log("id: " + id);
 
   Article.findOneAndUpdate(
     { "_id": id},

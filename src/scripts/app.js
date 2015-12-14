@@ -4,10 +4,17 @@ angular
     'BlogController',
     'ArticleController',
     'AddController',
+    'ezfb',
   ])
   .config([
     '$routeProvider',
-    function($routeProvider) {
+    'ezfbProvider',
+    function($routeProvider, ezfbProvider) {
+      ezfbProvider.setInitParams({
+        appId: '157210274636992',
+        version: 'v2.5'
+      });
+
       $routeProvider
         .when('/', {
           templateUrl: '/partials/blog-controller.html',
