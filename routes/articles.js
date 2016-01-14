@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://admin:1234@ds053184.mongolab.com:53184/mean-blog');
 var Article = require('./../models/article');
 
+//finds all articles in the DB, sorts by date (newest to oldest)
 exports.findAll = function(req, res) {
   Article.find({}, null, {sort: {date: -1}}, function(err, articles) {
     if (err) {
@@ -11,6 +12,7 @@ exports.findAll = function(req, res) {
   });
 };
 
+//finds one article by ID
 exports.findById = function(req, res) {
   var id = req.params.id;
 
@@ -22,6 +24,7 @@ exports.findById = function(req, res) {
   });
 };
 
+//inserts a new article to the DB
 exports.insertArticle = function(req, res, next) {
   var article = new Article();
   article.title = req.body.title;
@@ -42,6 +45,7 @@ exports.insertArticle = function(req, res, next) {
   });
 };
 
+//inserts a new comment to an article document
 exports.saveComment = function(req, res, next) {
   var comment = {
     name: req.body.name,

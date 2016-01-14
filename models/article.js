@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+//comment schema which is nested within the article schema
 var CommentSchema = new Schema({
     name: String,
     comment: String,
